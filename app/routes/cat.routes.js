@@ -15,4 +15,7 @@ module.exports = (app) => {
 
     // Delete a Cat with catId
     app.delete('/cat/:catId', cat.delete);
+
+    // Get average weight of a cat
+    app.get('/cat/avg', cat.avgweight)
 }

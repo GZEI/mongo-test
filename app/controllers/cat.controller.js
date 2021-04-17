@@ -120,3 +120,8 @@ exports.delete = (req, res) => {
         });
     });
 };
+exports.avgweight = ( req,res ) => {
+    Cat.aggregate([
+        { $group: { _id: null, weight: { $sum: "$weight" } } }
+    ]).then(result => {res.send(result);}).catch(ett => {res.status(500).send({nessage: err.message || "Some error"});});
+};
