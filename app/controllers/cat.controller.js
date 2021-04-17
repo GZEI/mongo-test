@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     // Create a Cat
     const cat = new Cat({
         name: req.body.name,
-        owner: req.body.owner || "Michi",
+        owner: req.body.owner || "Team F",
         color: req.body.color
     });
 
@@ -73,7 +73,7 @@ exports.update = (req, res) => {
     // Find cat and update it with the request body
     Cat.findByIdAndUpdate(req.params.catId, {
         name: req.body.name,
-        owner: req.body.owner || "Michi",
+        owner: req.body.owner || "Team F",
         color: req.body.color
     }, {new: true})
         .then(Cat => {
