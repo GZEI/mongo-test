@@ -13,7 +13,9 @@ exports.create = (req, res) => {
     const cat = new Cat({
         name: req.body.name,
         owner: req.body.owner || "Team F",
-        color: req.body.color
+        color: req.body.color,
+        weight: req.body.weight,
+        length: req.body.length
     });
 
     // Save Cat in the database
@@ -74,7 +76,9 @@ exports.update = (req, res) => {
     Cat.findByIdAndUpdate(req.params.catId, {
         name: req.body.name,
         owner: req.body.owner || "Team F",
-        color: req.body.color
+        color: req.body.color,
+        weight: req.body.weight,
+        length: req.body.length
     }, {new: true})
         .then(Cat => {
             if(!Cat) {
