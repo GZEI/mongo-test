@@ -122,6 +122,10 @@ exports.delete = (req, res) => {
 };
 exports.avgweight = ( req,res ) => {
     Cat.aggregate([
+<<<<<<< HEAD
         { $group: { _id: null, sumWeight: { $sum: "$sumWeight" }} }
+=======
+        { $group: { _id: null, weight: { $sum: "$weight" } } }
+>>>>>>> parent of 3815472... Added average to weight stat endpoint
     ]).then(result => {res.send(result);}).catch(ett => {res.status(500).send({nessage: err.message || "Some error"});});
 };
