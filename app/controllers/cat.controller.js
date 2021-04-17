@@ -120,8 +120,12 @@ exports.delete = (req, res) => {
         });
     });
 };
-exports.avgweight = ( req,res ) => {
+exports.stats = (req, res) => {
     Cat.aggregate([
-        { $group: { _id: null, sumweight: { $sum: "$weight" }, avgweight: { $avg: "$weight" }  } }
-    ]).then(result => {res.send(result);}).catch(ett => {res.status(500).send({nessage: err.message || "Some error"});});
+        {$group: {_id: null, maxweight: {$max: "$weight"}, avgweight: {$avg: "$weight"}, avglength: {$avg: "$length"}}}
+    ]).then(result => {
+        res.send(result);
+    }).catch(ett => {
+        res.status(500).send({nessage: err.message || "Some error"});
+    });
 };
