@@ -5,7 +5,7 @@ exports.create = (req, res) => {
     // Validate request
     if(!req.body.name || !req.body.color) {
         return res.status(400).send({
-            message: "Cat needs: name, color"
+            message: "Cat needs: name, color, weight, length"
         });
     }
 

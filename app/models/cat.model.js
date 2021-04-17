@@ -5,6 +5,7 @@ const CatSchema = mongoose.Schema({
     owner: String,
     color: String,
     weight: Number,
+    length: Number
 }, {
     timestamps: true
 });
