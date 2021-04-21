@@ -31,7 +31,7 @@ exports.create = (req, res) => {
 
 // Retrieve and return all cats from the database.
 exports.findAll = (req, res) => {
-    Cat.find().skip((req.query?.page || 0)*(req.query?.size || 10)).limit(+req.query?.size || 10)
+    Cat.find()
         .then(cats => {
             res.send(cats);
         }).catch(err => {
