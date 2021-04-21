@@ -133,3 +133,11 @@ exports.count = (req, res) => {
     Cat.count({}).then(count => res.json(count))
         .catch(err => res.status(500).json({message: err}));
 };
+exports.getPaginated = (req, res, next) => {
+    this.model.find({}, (err, docs) => {
+        if (err) {
+            return console.error(err);
+        }
+        res.json(docs);
+    }).skip((req.query?.page || 0)*(req.query?.size || 10)).limit(+req.query?.size || 10);
+};

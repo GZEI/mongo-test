@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.post('/cat', cat.create);
 
     // Retrieve all Cats
-    app.get('/cat', cat.findAll);
+    app.get('/cat', cat.getPaginated);
 
     // Retrieve a single Cat with catId
     app.get('/cat/:catId', cat.findOne);
