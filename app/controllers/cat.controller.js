@@ -3,7 +3,7 @@ const Cat = require('../models/cat.model.js');
 // Create and Save a new Cat
 exports.create = (req, res) => {
     // Validate request
-    if(!req.body.name || !req.body.color) {
+    if (!req.body.name || !req.body.color) {
         return res.status(400).send({
             message: "Cat needs: name, color, weight, length"
         });
@@ -45,14 +45,14 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
     Cat.findById(req.params.catId)
         .then(cat => {
-            if(!cat) {
+            if (!cat) {
                 return res.status(404).send({
                     message: "Cat not found with id " + req.params.catId
                 });
             }
             res.send(cat);
         }).catch(err => {
-        if(err.kind === 'ObjectId') {
+        if (err.kind === 'ObjectId') {
             return res.status(404).send({
                 message: "cat not found with id " + req.params.catId
             });
@@ -66,7 +66,7 @@ exports.findOne = (req, res) => {
 // Update a cat identified by the catId in the request
 exports.update = (req, res) => {
     // Validate Request
-    if(!req.body.name || !req.body.color) {
+    if (!req.body.name || !req.body.color) {
         return res.status(400).send({
             message: "Cat needs: name, color"
         });
@@ -81,14 +81,14 @@ exports.update = (req, res) => {
         length: req.body.length
     }, {new: true})
         .then(Cat => {
-            if(!Cat) {
+            if (!Cat) {
                 return res.status(404).send({
                     message: "Cat not found with id " + req.params.catId
                 });
             }
             res.send(Cat);
         }).catch(err => {
-        if(err.kind === 'ObjectId') {
+        if (err.kind === 'ObjectId') {
             return res.status(404).send({
                 message: "Cat not found with id " + req.params.catId
             });
@@ -103,14 +103,14 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     Cat.findByIdAndRemove(req.params.catId)
         .then(Cat => {
-            if(!Cat) {
+            if (!Cat) {
                 return res.status(404).send({
                     message: "Cat not found with id " + req.params.catId
                 });
             }
             res.send({message: "Cat deleted successfully!"});
         }).catch(err => {
-        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+        if (err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
                 message: "Cat not found with id " + req.params.catId
             });
@@ -128,4 +128,8 @@ exports.stats = (req, res) => {
     }).catch(ett => {
         res.status(500).send({nessage: err.message || "Some error"});
     });
+};
+exports.count = (req, res) => {
+    Cat.count({}).then(count => res.json(count))
+        .catch(err => res.status(500).json({message: err}));
 };
