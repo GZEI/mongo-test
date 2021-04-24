@@ -14,6 +14,8 @@ exports.create = (req, res) => {
         name: req.body.name,
         owner: req.body.owner || "Team F",
         color: req.body.color,
+        age: req.body.age || 0,
+        look: req.body.look || "normal",
         weight: req.body.weight,
         length: req.body.length
     });

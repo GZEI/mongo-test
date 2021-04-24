@@ -4,6 +4,8 @@ const CatSchema = mongoose.Schema({
     name: String,
     owner: String,
     color: String,
+    age: Number,
+    look: String,
     weight: Number,
     length: Number
 }, {
