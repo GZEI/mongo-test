@@ -137,3 +137,16 @@ exports.count = (req, res) => {
     Cat.count({}).then(count => res.json(count))
         .catch(err => res.status(500).json({message: err}));
 };
+
+// Get list of cat names
+exports.getList = (req, res) => {
+    Cat.find().select('name')
+        .then(cats => {
+            res.send(cats);
+        }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while listing cats."
+        });
+    });
+};
+
