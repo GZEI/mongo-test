@@ -4,6 +4,9 @@ module.exports = (app) => {
     // Get the number of all cats in the database
     app.get('/cat/count', cat.count)
 
+    //List of names
+    app.get('/cat/list' , cat.getList);
+
     // Create a new Cat
     app.post('/cat', cat.create);
 
