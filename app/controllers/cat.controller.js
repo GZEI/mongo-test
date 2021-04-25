@@ -5,7 +5,7 @@ exports.create = (req, res) => {
     // Validate request
     if (!req.body.name || !req.body.color) {
         return res.status(400).send({
-            message: "Cat needs: name, color, age, look, weight, length"
+            message: "Cat needs: name, color. Optional: age, look, weight, length"
         });
     }
 
@@ -70,7 +70,7 @@ exports.update = (req, res) => {
     // Validate Request
     if (!req.body.name || !req.body.color) {
         return res.status(400).send({
-            message: "Cat needs: name, color, age, look, weight, length"
+            message: "Cat needs: name, color. Optional: age, look, weight, length"
         });
     }
 
